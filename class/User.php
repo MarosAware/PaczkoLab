@@ -1,6 +1,6 @@
 <?php
 
-class User implements Action
+class User // implements Action
 {
 
 }

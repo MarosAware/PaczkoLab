@@ -1,6 +1,6 @@
 <?php
 
-class Parcel implements Action
+class Parcel // implements Action
 {
     
 }

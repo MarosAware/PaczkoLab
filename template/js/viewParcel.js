@@ -13,10 +13,17 @@ $(document).ready(function() {
             dataType: 'json'
         }).done(function(response) {
             insertContentParcel(response);
-        }).fail(function(response) {
+            // console.log(response);
+            // alert( "Ok");
+
+        }).fail(function(response, status, err) {
+            // console.log(response);
+            // console.log(status);
+            // console.log(err);
             alert( "Wystąpił błąd");
         });
     }
+    console.log("start");
     loadParcelView();
 
     // PARCEL
@@ -129,6 +136,7 @@ $(document).ready(function() {
                 dataType: 'json'
             }).done(function (response) {
                 location.reload();
+                //TODO: Parcel was deleted not user?
                 alert('Użytkownik został usunięty');
             }).fail(function (response) {
 

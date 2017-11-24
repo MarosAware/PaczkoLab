@@ -4,7 +4,7 @@ interface Database
 {
     public function query($query);
 
-    public function bind($param, $value, $type);
+    public function bind($param, $value, $type = null);
 
     public function execute();
 

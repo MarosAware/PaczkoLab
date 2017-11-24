@@ -101,7 +101,8 @@ $(document).ready(function() {
                 dataType: 'json'
             }).done(function (response) {
                 alert('Rozmiar zostanie usunięty');
-                location.reload();
+                location.reload()
+                // console.log(response);
             }).fail(function (response) {
                 alert( "Wystąpił błąd");
             });

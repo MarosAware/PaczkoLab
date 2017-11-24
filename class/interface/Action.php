@@ -8,8 +8,10 @@ interface Action
 
     public function update();
 
-    public function delete();
+//    TODO: Or why no static... ?
+    public static function delete($id);
 
+//    TODO: Why static...
     public static function load($id = null);
     
     public static function loadAll();

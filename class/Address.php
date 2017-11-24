@@ -1,6 +1,6 @@
 <?php
 
-class Address implements Action
+class Address // implements Action
 {
 
     
