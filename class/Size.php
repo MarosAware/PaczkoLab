@@ -37,9 +37,9 @@ class Size implements Action
     {
         if($this->id !== -1) {
             self::$db->query('UPDATE `size` SET `size`=:size, price=:price WHERE id=:id');
-            self::$db->bind('size',$this->size);
-            self::$db->bind('price',$this->price);
-            self::$db->bind('id',$this->id);
+            self::$db->bind('size',$this->size, PDO::PARAM_STR);
+            self::$db->bind('price',$this->price, PDO::PARAM_INT);
+            self::$db->bind('id',$this->id, PDO::PARAM_INT);
             $result = self::$db->execute();
 
             if($result !== false){

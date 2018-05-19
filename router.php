@@ -9,7 +9,6 @@ if ($db->getError()) {
     $response['DB_error'] = 'DB Connection error: ' . $db->getError();
 }
 
-
 ######### Dynamic load php class file depend on request #########
 $pathInfo = $_SERVER['PATH_INFO'];
 $arrPath = explode('/', $pathInfo);
@@ -26,6 +25,7 @@ require_once $classFile;
 
 if (!isset($response['DB_error'])) { //if no db error
     include_once __DIR__ . '/restEndPoints/' . $className . '.php';
+
 } else {
     header("HTTP/1.0 500 Internal Server Error");
 }

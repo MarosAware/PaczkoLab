@@ -2,6 +2,7 @@
 
 //TODO: Make autoload
 //Load dependency classes
+
 require(__DIR__ . '/class/interface/Database.php');
 require(__DIR__ . '/class/interface/Action.php');
 
