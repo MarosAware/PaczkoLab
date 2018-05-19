@@ -39,9 +39,7 @@ class DBmysql implements Database
         $dbid = 'mysql:host=' . DB_SERVER_NAME . ';dbname=' . DB_BASE_NAME . ';charset=utf8';
         $options = array(PDO::ATTR_PERSISTENT => true, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
         try {
-//            TODO: Why two times
             $this->dbh = new PDO($dbid, DB_USERNAME, DB_PASSWORD, $options);
-//            $this->dbh = new PDO($dbid, DB_USERNAME, DB_PASSWORD, $options);
         } catch (PDOException $e) {
             $this->error = $e->getMessage();
         }

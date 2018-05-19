@@ -66,9 +66,9 @@ class Size implements Action
             $row =  self::$db->single();
 
             $size = new Size();
-            $size->size = $row->size;
-            $size->price = $row->price;
-            $size->id = $row->id;
+            $size->size = $row['size'];
+            $size->price = $row['price'];
+            $size->id = $row['id'];
 
             return $size;
         }
@@ -79,21 +79,7 @@ class Size implements Action
     public static function loadAll()
     {
         self::$db->query("SELECT * FROM `size`");
-        $allObj =  self::$db->resultSet();
-
-        $loadedAllObj = [];
-
-        foreach($allObj as $obj) {
-            $size = new Size();
-            $size->size = $obj->size;
-            $size->price = $obj->price;
-            $size->id = $obj->id;
-
-            $loadedAllObj [] = $size;
-        }
-
-        return $loadedAllObj;
-
+        return self::$db->resultSet();
     }
 
     public static function setDb(Database $db)
