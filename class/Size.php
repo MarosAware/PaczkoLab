@@ -20,7 +20,7 @@ class Size implements Action
     public function save()
     {
         if ($this->id == -1){
-            self::$db->query('INSERT INTO `size` (`size`, price) VALUE (:size, :price)');
+            self::$db->query('INSERT INTO `Size` (`size`, price) VALUE (:size, :price)');
             self::$db->bind('size',$this->size,  PDO::PARAM_STR);
             self::$db->bind('price',$this->price,PDO::PARAM_INT);
             $result = self::$db->execute();
@@ -31,20 +31,18 @@ class Size implements Action
             }
         }
 
+        return false;
+
     }
 
     public function update()
     {
         if($this->id !== -1) {
-            self::$db->query('UPDATE `size` SET `size`=:size, price=:price WHERE id=:id');
+            self::$db->query('UPDATE `Size` SET `size`=:size, price=:price WHERE id=:id');
             self::$db->bind('size',$this->size, PDO::PARAM_STR);
             self::$db->bind('price',$this->price, PDO::PARAM_INT);
             self::$db->bind('id',$this->id, PDO::PARAM_INT);
-            $result = self::$db->execute();
-
-            if($result !== false){
-                return true;
-            }
+            return self::$db->execute();
         }
 
     }
@@ -52,8 +50,8 @@ class Size implements Action
     public static function delete($id)
     {
         if($id){
-            self::$db->query('DELETE FROM size WHERE id=:id');
-            self::$db->bind('id',$id);
+            self::$db->query('DELETE FROM `Size` WHERE id=:id');
+            self::$db->bind('id',$id, PDO::PARAM_INT);
             return self::$db->execute();
         }
     }
@@ -61,8 +59,8 @@ class Size implements Action
     public static function load($id)
     {
         if($id){
-            self::$db->query("SELECT * FROM `size` WHERE id=:id");
-            self::$db->bind('id',$id);
+            self::$db->query("SELECT * FROM `Size` WHERE id=:id");
+            self::$db->bind('id',$id, PDO::PARAM_INT);
             $row =  self::$db->single();
 
             $size = new Size();
@@ -78,7 +76,7 @@ class Size implements Action
 
     public static function loadAll()
     {
-        self::$db->query("SELECT * FROM `size`");
+        self::$db->query("SELECT * FROM `Size`");
         return self::$db->resultSet();
     }
 
@@ -117,6 +115,14 @@ class Size implements Action
     public function setPrice($price)
     {
         $this->price = $price;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
 }
