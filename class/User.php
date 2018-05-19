@@ -41,12 +41,9 @@ class User implements Action
             self::$db->bind('credits',$this->credits, PDO::PARAM_INT);
             self::$db->bind('address',$this->address, PDO::PARAM_INT);
             self::$db->bind('id',$this->id, PDO::PARAM_INT);
-            $result = self::$db->execute();
-
-            if($result !== false){
-                return true;
-            }
+            return self::$db->execute();
         }
+
     }
 
     public static function delete($id)
@@ -70,6 +67,7 @@ class User implements Action
             $user->surname = $row->surname;
             $user->credits = $row->credits;
             $user->address = $row->address;
+            $user->id = $row->id;
 
             return $user;
         }

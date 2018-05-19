@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $address->setCode($patchVars['code']);
     $address->setFlat($patchVars['flat']);
 
-    $result = $address->save();
+    $result = $address->update();
 
     if ($result) {
         $response['success'] = $result;

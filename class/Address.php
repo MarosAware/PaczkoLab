@@ -19,7 +19,7 @@ class Address implements Action
     public function save()
     {
         if($this->id = -1){
-            self::$db->guery('INSERT INTO `Address` ( `city`, `code`, `street`, `flat` ) VALUES ( :city, :code, :street, :flat)');
+            self::$db->query('INSERT INTO `Address` ( `city`, `code`, `street`, `flat` ) VALUES ( :city, :code, :street, :flat)');
             self::$db->bind('city', $this->city, PDO::PARAM_STR);
             self::$db->bind('code', $this->code, PDO::PARAM_STR);
             self::$db->bind('street', $this->street, PDO::PARAM_STR);
@@ -64,10 +64,11 @@ class Address implements Action
             $row =  self::$db->single();
 
             $address = new Address();
-            $address->city = $row['city'];
-            $address->code = $row['code'];
-            $address->street = $row['street'];
-            $address->flat = $row['flat'];
+            $address->city = $row->city;
+            $address->code = $row->code;
+            $address->street = $row->street;
+            $address->flat = $row->flat;
+            $address->id = $row->id;
 
             return $address;
         }

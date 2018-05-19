@@ -62,9 +62,9 @@ class Size implements Action
             $row =  self::$db->single();
 
             $size = new Size();
-            $size->size = $row['size'];
-            $size->price = $row['price'];
-            $size->id = $row['id'];
+            $size->size = $row->size;
+            $size->price = $row->price;
+            $size->id = $row->id;
 
             return $size;
         }
