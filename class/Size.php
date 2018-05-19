@@ -30,9 +30,7 @@ class Size implements Action
                 return true;
             }
         }
-
         return false;
-
     }
 
     public function update()
