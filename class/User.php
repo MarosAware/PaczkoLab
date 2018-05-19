@@ -5,8 +5,8 @@ class User implements Action
     private $id;
     private $name;
     private $surname;
-    private $creditAmount;
-    private $addressId;
+    private $credits;
+    private $address;
 
     private static $db;
 
@@ -18,11 +18,11 @@ class User implements Action
     public function save()
     {
         if ($this->id == -1){
-            self::$db->query('INSERT INTO `user` (`name`, `surname`, `creditAmount`, `addressId`) VALUE (:name, :surname, :creditAmount, :addressId)');
+            self::$db->query('INSERT INTO `User` (`name`, `surname`, `credits`, `address`) VALUE (:name, :surname, :credits, :address)');
             self::$db->bind('name',$this->name,  PDO::PARAM_STR);
             self::$db->bind('surname',$this->surname, PDO::PARAM_STR);
-            self::$db->bind('creditAmount',$this->creditAmount, PDO::PARAM_INT);
-            self::$db->bind('addressId',$this->addressId, PDO::PARAM_INT);
+            self::$db->bind('credits',$this->credits, PDO::PARAM_INT);
+            self::$db->bind('address',$this->address, PDO::PARAM_INT);
             $result = self::$db->execute();
 
             if($result !== false){
@@ -35,11 +35,11 @@ class User implements Action
     public function update()
     {
         if($this->id !== -1) {
-            self::$db->query('UPDATE `user` SET `name`=:name, `surname`=:surname, `creditAmount`=:creditAmount, `addressId`=:addressId  WHERE `id`=:id');
+            self::$db->query('UPDATE `User` SET `name`=:name, `surname`=:surname, `credits`=:credits, `address`=:address  WHERE `id`=:id');
             self::$db->bind('name',$this->name, PDO::PARAM_STR);
             self::$db->bind('surname',$this->surname, PDO::PARAM_STR);
-            self::$db->bind('creditAmount',$this->creditAmount, PDO::PARAM_INT);
-            self::$db->bind('adddressId',$this->addressId, PDO::PARAM_INT);
+            self::$db->bind('credits',$this->credits, PDO::PARAM_INT);
+            self::$db->bind('address',$this->address, PDO::PARAM_INT);
             self::$db->bind('id',$this->id, PDO::PARAM_INT);
             $result = self::$db->execute();
 
@@ -52,7 +52,7 @@ class User implements Action
     public static function delete($id)
     {
         if($id){
-            self::$db->query('DELETE FROM user WHERE id=:id');
+            self::$db->query('DELETE FROM `User` WHERE id=:id');
             self::$db->bind('id',$id);
             return self::$db->execute();
         }
@@ -61,15 +61,15 @@ class User implements Action
     public static function load($id = null)
     {
         if($id){
-            self::$db->query("SELECT * FROM `user` WHERE id=:id");
+            self::$db->query("SELECT * FROM `User` WHERE id=:id");
             self::$db->bind('id',$id);
             $row =  self::$db->single();
 
             $user = new User();
             $user->name = $row->name;
             $user->surname = $row->surname;
-            $user->creditAmount = $row->creditAmount;
-            $user->addressId = $row->addressId;
+            $user->credits = $row->credits;
+            $user->address = $row->address;
 
             return $user;
         }
@@ -79,7 +79,7 @@ class User implements Action
 
     public static function loadAll()
     {
-        self::$db->query("SELECT * FROM `user`");
+        self::$db->query("SELECT * FROM `User`");
         return self::$db->resultSet();
 
     }
@@ -124,32 +124,32 @@ class User implements Action
     /**
      * @return mixed
      */
-    public function getCreditAmount()
+    public function getCredits()
     {
-        return $this->creditAmount;
+        return $this->credits;
     }
 
     /**
-     * @param mixed $creditAmount
+     * @param mixed $credits
      */
-    public function setCreditAmount($creditAmount)
+    public function setCredits($credits)
     {
-        $this->creditAmount = $creditAmount;
+        $this->credits = $credits;
     }
 
     /**
      * @return mixed
      */
-    public function getAddressId()
+    public function getAddress()
     {
-        return $this->addressId;
+        return $this->address;
     }
 
     /**
-     * @param mixed $addressId
+     * @param mixed $address
      */
-    public function setAddressId($addressId)
+    public function setAddress($address)
     {
-        $this->addressId = $addressId;
+        $this->address = $address;
     }
 }
