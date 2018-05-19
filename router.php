@@ -11,8 +11,8 @@ if ($db->getError()) {
 
 ######### Dynamic load php class file depend on request #########
 $pathInfo = $_SERVER['PATH_INFO'];
-$arrPath = explode('/', $pathInfo);
 
+$arrPath = explode('/', $pathInfo);
 $requestClass = $arrPath[1];
 
 $requestClass = preg_replace('/[^a-zA-Z0-9]/', '', $requestClass);
@@ -23,6 +23,12 @@ require_once $classFile;
 
 ######### End dynamic load #########
 
+$pathId = !empty($arrPath[2]) ? $arrPath[2] : null;
+
+if ($pathId) {
+    $pathId = preg_replace('/[a-zA-Z\s_]/', '', $pathId);
+}
+
 if (!isset($response['DB_error'])) { //if no db error
     include_once __DIR__ . '/restEndPoints/' . $className . '.php';
 
@@ -30,7 +36,7 @@ if (!isset($response['DB_error'])) { //if no db error
     header("HTTP/1.0 500 Internal Server Error");
 }
 
-header('Content-Type: application/json');//return json header
+header('Content-Type: html');//return json header
 
 if (isset($response['error'])) {
     header("HTTP/1.0 400 Bad Request");

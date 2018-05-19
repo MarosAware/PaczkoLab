@@ -55,7 +55,7 @@ $(document).ready(function() {
                 });
             }
 
-            var id = this.address_id;
+            var id = this.address;
             var url = '../../router.php/address/';
 
             // Show address from database ADDRESS in table

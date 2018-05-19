@@ -1,11 +1,10 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    parse_str(file_get_contents("php://input"), $patchVars);
     Size::setDb($db);
 
-    if (isset($patchVars['id'])) {
-        $size = Size::load($patchVars['id']);
+    if (isset($pathId)) {
+        $size = Size::load($pathId);
         $response =
             [
                 [

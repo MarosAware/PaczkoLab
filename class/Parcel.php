@@ -59,6 +59,7 @@ class Parcel implements Action
             self::$db->bind('id', $id, PDO::PARAM_INT);
             $obj = self::$db->single();
 
+            var_dump($obj);
             $parcel = new Parcel();
             $parcel->name = $obj->name;
             $parcel->size = $obj->size;

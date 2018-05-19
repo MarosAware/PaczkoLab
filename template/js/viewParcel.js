@@ -13,11 +13,11 @@ $(document).ready(function() {
             dataType: 'json'
         }).done(function(response) {
             insertContentParcel(response);
-            // console.log(response);
+             //console.log(response);
             // alert( "Ok");
 
         }).fail(function(response, status, err) {
-            // console.log(response);
+            //console.log(response);
             // console.log(status);
             // console.log(err);
             alert( "Wystąpił błąd");
@@ -59,7 +59,9 @@ $(document).ready(function() {
                 });    
             }
 
-            var addressId = this.address_id;
+            console.log(this);
+            var addressId = this.address;
+            console.log(addressId);
             var url = '../../router.php/address/';
 
             // Show data from database ADDRESS in table
@@ -81,7 +83,7 @@ $(document).ready(function() {
                 });
             }
 
-            var userId = this.user_id;
+            var userId = this.name;
             var url = '../../router.php/user/';
 
             // Show data from database USER in table
@@ -104,7 +106,7 @@ $(document).ready(function() {
                 })
             }
 
-            var sizeId = this.size_id;
+            var sizeId = this.size;
             var url = '../../router.php/size/';
 
             // Show data from database SIZE in table
@@ -136,8 +138,7 @@ $(document).ready(function() {
                 dataType: 'json'
             }).done(function (response) {
                 location.reload();
-                //TODO: Parcel was deleted not user?
-                alert('Użytkownik został usunięty');
+                alert('Paczka została usunięta');
             }).fail(function (response) {
 
             });

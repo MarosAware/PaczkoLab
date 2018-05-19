@@ -1,11 +1,10 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    parse_str(file_get_contents("php://input"), $patchVars);
     Parcel::setDb($db);
 
-    if (isset($patchVars['id'])) {
-        $parcel = Parcel::load($patchVars['id']);
+    if (isset($pathId)) {
+        $parcel = Parcel::load($pathId);
         $response =
             [
                 [
@@ -21,10 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
     parse_str(file_get_contents("php://input"), $patchVars);
     Parcel::setDb($db);
-    $parcel = new Parcel($db);
-    $parcel->setName($patchVars['name']);
-    $parcel->setAddress($patchVars['address']);
-    $parcel->setSize($patchVars['size']);
+    $parcel = new Parcel();
+    $parcel->setName($patchVars['user_id']);
+    $parcel->setAddress($patchVars['address_id']);
+    $parcel->setSize($patchVars['size_id']);
 
     $result = $parcel->save();
 
@@ -42,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $parcel->setAddress($patchVars['address']);
     $parcel->setSize($patchVars['size']);
 
-    $result = $parcel->save();
+    $result = $parcel->update();
 
     if ($result) {
         $response['success'] = $result;
