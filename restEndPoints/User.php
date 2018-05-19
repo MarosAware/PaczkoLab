@@ -1,11 +1,10 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    parse_str(file_get_contents("php://input"), $patchVars);
     User::setDb($db);
 
-    if (isset($patchVars['id'])) {
-        $user = User::load($patchVars['id']);
+    if (isset($pathId)) {
+        $user = User::load($pathId);
         $response =
             [
                 [

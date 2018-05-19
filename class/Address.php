@@ -38,11 +38,12 @@ class Address implements Action
     public function update()
     {
         if($this->id !== -1){
-            self::$db->query('UPDATE `Address` SET `city`=:city, `code`=:code, `street`=:street, `flat`=:flat');
+            self::$db->query('UPDATE `Address` SET `city`=:city, `code`=:code, `street`=:street, `flat`=:flat WHERE id=:id');
             self::$db->bind('city', $this->city, PDO:: PARAM_STR);
             self::$db->bind('code', $this->code, PDO::PARAM_STR);
             self::$db->bind('street', $this->street, PDO::PARAM_STR);
             self::$db->bind('flat', $this->flat, PDO::PARAM_INT);
+            self::$db->bind('id', $this->id, PDO::PARAM_INT);
             return self::$db->execute();
         }
     }
@@ -72,7 +73,6 @@ class Address implements Action
 
             return $address;
         }
-
         return false;
     }
 

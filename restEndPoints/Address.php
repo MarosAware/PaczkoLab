@@ -1,11 +1,10 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    parse_str(file_get_contents("php://input"), $patchVars);
     Address::setDb($db);
 
-    if (isset($patchVars['id'])) {
-        $address = Address::load($patchVars['id']);
+    if (isset($pathId)) {
+        $address = Address::load($pathId);
         $response =
             [
                 [
