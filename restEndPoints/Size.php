@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $size = Size::load($patchVars['id']);
     $size->setSize($patchVars['size']);
     $size->setPrice($patchVars['price']);
-    $result = $size->save();
+    $result = $size->update();
 
     if ($result) {
         $response['success'] = $result;

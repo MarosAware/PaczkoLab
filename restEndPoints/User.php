@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $user->setName($patchVars['name']);
     $user->setSurname($patchVars['surname']);
     $user->setCredits($patchVars['credits']);
-    $user->setAddress($patchVars['address_option']);
+    $user->setAddress($patchVars['address_id']);
 
     $result = $user->save();
 
@@ -43,9 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $user->setName($patchVars['name']);
     $user->setSurname($patchVars['surname']);
     $user->setCredits($patchVars['credits']);
-    $user->setAddress($patchVars['address_option']);
 
-    $result = $user->save();
+    $result = $user->update();
 
     if ($result) {
         $response['success'] = $result;
