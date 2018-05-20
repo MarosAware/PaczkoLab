@@ -34,7 +34,7 @@ class Parcel implements Action
     public function update()
     {
         if ($this->id !== -1) {
-            self::$db->query('UPDATE Parcel SET `name`=:name `size`=:size address=:address WHERE id=:id');
+            self::$db->query('UPDATE Parcel SET `name`=:name, `size`=:size, address=:address WHERE id=:id');
             self::$db->bind('name', $this->name, PDO::PARAM_INT);
             self::$db->bind('size', $this->size, PDO::PARAM_INT);
             self::$db->bind('address', $this->address, PDO::PARAM_INT);

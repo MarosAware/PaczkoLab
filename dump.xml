@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<database name="packages">
+	<table_data name="Size">
+		<row>
+			<field name="id">1</field>
+			<field name="size">M</field>
+			<field name="price">10.00</field>
+		</row>
+		<row>
+			<field name="id">2</field>
+			<field name="size">XL</field>
+			<field name="price">12.00</field>
+		</row>
+		<row>
+			<field name="id">3</field>
+			<field name="size">S</field>
+			<field name="price">5.00</field>
+		</row>
+	</table_data>
+	<table_data name="Address">
+	<row>
+		<field name="id">1</field>
+		<field name="city">Warszawa</field>
+		<field name="code">16-230</field>
+		<field name="street">1 Maja 4</field>
+		<field name="flat">71</field>
+	</row>
+	<row>
+		<field name="id">2</field>
+		<field name="city">Warszawa</field>
+		<field name="code">16-230</field>
+		<field name="street">Kowalskiego 9</field>
+		<field name="flat">10</field>
+	</row>
+	<row>
+		<field name="id">3</field>
+		<field name="city">Warszawa</field>
+		<field name="code">16-230</field>
+		<field name="street">Skierniewicka 14</field>
+		<field name="flat">2</field>
+	</row>
+	<row>
+		<field name="id">4</field>
+		<field name="city">Warszawa</field>
+		<field name="code">16-230</field>
+		<field name="street">Pusta 6</field>
+		<field name="flat">4</field>
+	</row>
+	<row>
+		<field name="id">5</field>
+		<field name="city">Warszawa</field>
+		<field name="code">16-230</field>
+		<field name="street">Skierniewicka 5</field>
+		<field name="flat">6</field>
+	</row>
+	<row>
+		<field name="id">6</field>
+		<field name="city">Warszawa</field>
+		<field name="code">16-230</field>
+		<field name="street">Nowa 12</field>
+		<field name="flat">8</field>
+	</row>
+	</table_data>
+	<table_data name="User">
+		<row>
+			<field name="id">1</field>
+			<field name="name">Wieslaw</field>
+			<field name="surname">Nowikowski</field>
+			<field name="credits">1000</field>
+			<field name="address">1</field>
+		</row>
+		<row>
+			<field name="id">2</field>
+			<field name="name">Stanislaw</field>
+			<field name="surname">Nowak</field>
+			<field name="credits">7</field>
+			<field name="address">2</field>
+		</row>
+		<row>
+			<field name="id">3</field>
+			<field name="name">Robert</field>
+			<field name="surname">Stefanowicz</field>
+			<field name="credits">4</field>
+			<field name="address">3</field>
+		</row>
+		<row>
+			<field name="id">4</field>
+			<field name="name">Jan</field>
+			<field name="surname">Kowalski</field>
+			<field name="credits">1000</field>
+			<field name="address">4</field>
+		</row>
+	</table_data>
+	<table_data name="Parcel">
+	<row>
+		<field name="id">1</field>
+		<field name="name">3</field>
+		<field name="size">2</field>
+		<field name="address">3</field>
+	</row>
+	<row>
+		<field name="id">2</field>
+		<field name="name">2</field>
+		<field name="size">2</field>
+		<field name="address">2</field>
+	</row>
+	<row>
+		<field name="id">3</field>
+		<field name="name">3</field>
+		<field name="size">3</field>
+		<field name="address">3</field>
+	</row>
+	</table_data>
+</database>
+</mysqldump>
