@@ -1,0 +1,13 @@
+{
+    "name": "paulina/war_php_s_12_warsztat_4",
+    "authors": [
+        {
+            "name": "Paulina Pietruszewska",
+            "email": "paulina.suwalki@gmail.com"
+        }
+    ],
+    "require": {
+        "phpunit/dbunit": "^3.0",
+        "phpunit/phpunit": "^6.2"
+    }
+}
